@@ -1,13 +1,8 @@
-# Quill ImageResize Module
+# Quill VideoResize Module
 
-A module for Quill rich text editor to allow images to be resized.
+A module for Quill rich text editor to allow videos to be resized.
+Lazily adaptated from [kensnyder/quill-image-resize-module](https://github.com/kensnyder/quill-image-resize-module)
 
-Also see [quill-image-drop-module](https://github.com/kensnyder/quill-image-drop-module),
-a module that enables copy-paste and drag/drop for Quill.
-
-## Demo
-
-[Plunker](https://plnkr.co/edit/gq708AOrSBOWSlHcFslG?p=preview)
 
 ## Usage
 
@@ -15,27 +10,35 @@ a module that enables copy-paste and drag/drop for Quill.
 
 ```javascript
 import Quill from 'quill';
-import { ImageResize } from 'quill-image-resize-module';
+import VideoResize from 'quill-video-resize-module';
 
-Quill.register('modules/imageResize', ImageResize);
+Quill.register('modules/VideoResize', VideoResize);
 
 const quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        imageResize: {
+        videoResize: {
             // See optional "config" below
         }
     }
 });
 ```
 
+/!\ You also need to add CSS to disable pointer-events in the video iframe while in editor mode to prevent
+
+```css
+.quill-editor iframe {
+    pointer-events: none;
+}
+```
+
 ### Script Tag
 
-Copy image-resize.min.js into your web root or include from node_modules
+Copy video-resize.min.js into your web root or include from node_modules
 
 ```html
-<script src="/node_modules/quill-image-resize-module/image-resize.min.js"></script>
+<script src="/node_modules/quill-video-resize-module/video-resize.min.js"></script>
 ```
 
 ```javascript
@@ -43,11 +46,19 @@ var quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {
+        VideoResize: {
             // See optional "config" below
         }
     }
 });
+```
+
+/!\ You also need to add CSS to disable pointer-events in the video iframe while in editor mode to prevent
+
+```css
+.quill-editor iframe {
+    pointer-events: none;
+}
 ```
 
 ### Config
@@ -58,10 +69,9 @@ var quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {}
+        VideoResize: {}
     }
 });
-```
 
 Functionality is broken down into modules, which can be mixed and matched as you like. For example,
 the default is to include all modules:
@@ -71,7 +81,7 @@ const quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {
+        VideoResize: {
             modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
         }
     }
@@ -80,9 +90,9 @@ const quill = new Quill(editor, {
 
 Each module is described below.
 
-#### `Resize` - Resize the image
+#### `Resize` - Resize the video
 
-Adds handles to the image's corners which can be dragged with the mouse to resize the image.
+Adds handles to the video's corners which can be dragged with the mouse to resize the video.
 
 The look and feel can be controlled with options:
 
@@ -91,7 +101,7 @@ var quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {
+        VideoResize: {
             // ...
             handleStyles: {
                 backgroundColor: 'black',
@@ -106,7 +116,7 @@ var quill = new Quill(editor, {
 
 #### `DisplaySize` - Display pixel size
 
-Shows the size of the image in pixels near the bottom right of the image.
+Shows the size of the video in pixels near the bottom right of the video.
 
 The look and feel can be controlled with options:
 
@@ -115,7 +125,7 @@ var quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {
+        VideoResize: {
             // ...
             displayStyles: {
                 backgroundColor: 'black',
@@ -128,9 +138,9 @@ var quill = new Quill(editor, {
 });
 ```
 
-#### `Toolbar` - Image alignment tools
+#### `Toolbar` - Video alignment tools
 
-Displays a toolbar below the image, where the user can select an alignment for the image.
+Displays a toolbar below the video, where the user can select an alignment for the video.
 
 The look and feel can be controlled with options:
 
@@ -139,7 +149,7 @@ var quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {
+        VideoResize: {
             // ...
             toolbarStyles: {
                 backgroundColor: 'black',
@@ -166,7 +176,7 @@ the module setup.
 For example,
 
 ```javascript
-import { Resize, BaseModule } from 'quill-image-resize-module';
+import { Resize, BaseModule } from 'quill-video-resize-module';
 
 class MyModule extends BaseModule {
     // See src/modules/BaseModule.js for documentation on the various lifecycle callbacks
@@ -176,7 +186,7 @@ var quill = new Quill(editor, {
     // ...
     modules: {
         // ...
-        ImageResize: {
+        VideoResize: {
             modules: [ MyModule, Resize ],
             // ...
         }

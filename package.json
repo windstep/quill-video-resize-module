@@ -1,8 +1,8 @@
 {
-  "name": "quill-image-resize-module",
-  "version": "3.0.0",
-  "description": "A module for Quill rich text editor to allow images to be resized.",
-  "main": "image-resize.min.js",
+  "name": "quill-video-resize-module",
+  "version": "1.0.0",
+  "description": "A module for Quill rich text editor to allow videos to be resized.",
+  "main": "video-resize.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "webpack -p --progress --colors",
@@ -12,17 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kensnyder/quill-image-resize-module.git"
+    "url": "git+https://github.com/kensnyder/quill-video-resize-module.git"
   },
   "keywords": [
     "quill",
     "quilljs",
-    "image",
+    "video",
     "resize",
     "sizer"
   ],
-  "author": "@kensnyder",
+  "author": "@lulhum",
   "contributors": [
+    {
+      "name": "kensnyder",
+      "url": "https://github.com/kensnyder"
+    },
     {
       "name": "Wikia",
       "url": "https://github.com/Wikia"
@@ -30,9 +34,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kensnyder/quill-image-resize-module/issues"
+    "url": "https://github.com/Y-WeCode/quill-video-resize-module/issues"
   },
-  "homepage": "https://github.com/kensnyder/quill-image-resize-module#readme",
+  "homepage": "https://github.com/Y-WeCode/quill-video-resize-module#readme",
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-eslint": "^7.2.1",
