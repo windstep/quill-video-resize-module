@@ -1,6 +1,6 @@
 {
   "name": "quill-video-resize-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module for Quill rich text editor to allow videos to be resized.",
   "main": "video-resize.min.js",
   "scripts": {
