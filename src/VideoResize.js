@@ -55,10 +55,18 @@ export default class VideoResize {
         }
       )
     }
+
+    this.checkVideo = evt => {
+      if (this.vid) {
+        if (evt.keyCode == 46 || evt.keyCode == 8) {
+          window.Quill.find(this.vid).deleteAt(0)
+        }
+        this.hide()
+      }
+    }
   }
 
   initializeModules () {
-    console.log('initialize Module')
     this.removeModules()
 
     this.modules = this.moduleClasses.map(
@@ -67,7 +75,6 @@ export default class VideoResize {
 
     this.modules.forEach(
       (module) => {
-        console.log(module)
         module.onCreate()
       }
     )
@@ -194,7 +201,6 @@ export default class VideoResize {
   }
 
   hide () {
-    console.log('hide')
     this.hideOverlay()
     this.removeModules()
     this.vid = undefined
@@ -211,15 +217,6 @@ export default class VideoResize {
       this.quill.root.style[prop] = value
       document.documentElement.style[prop] = value
     })
-  }
-
-  checkVideo (evt) {
-    if (this.vid) {
-      if (evt.keyCode == 46 || evt.keyCode == 8) {
-        window.Quill.find(this.vid).deleteAt(0)
-      }
-      this.hide()
-    }
   }
 }
 

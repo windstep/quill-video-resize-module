@@ -2,7 +2,6 @@ import { BaseModule } from './BaseModule'
 
 export class Resize extends BaseModule {
   onCreate () {
-    console.log('oncreate')
     // track resize handles
     this.boxes = []
 
@@ -49,9 +48,6 @@ export class Resize extends BaseModule {
   positionBoxes () {
     const handleXOffset = `${-parseFloat(this.options.handleStyles.width) / 2}px`
     const handleYOffset = `${-parseFloat(this.options.handleStyles.height) / 2}px`
-    console.log('handelY')
-    console.log(handleYOffset)
-    console.log('----')
 
     const l = [
       { left: handleXOffset, top: handleYOffset },        // top left
@@ -60,13 +56,10 @@ export class Resize extends BaseModule {
       { left: handleXOffset, bottom: handleYOffset }     // bottom left
     ]
 
-    console.log(l)
     // set the top and left for each drag handle
     l.forEach((pos, idx) => {
-      console.log(idx)
       Object.assign(this.boxes[idx].style, pos)
     })
-    console.log('afterpositionBoxes')
   }
 
   addBox (cursor) {
